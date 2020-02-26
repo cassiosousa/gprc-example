@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
-@Document(collation = "cities")
+@Document("cities")
 public class City implements Serializable {
 
     @Id
@@ -48,5 +48,16 @@ public class City implements Serializable {
 
     public void setPopulation(String population) {
         this.population = population;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("City{");
+        sb.append("id='").append(id).append('\'');
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", countryCode='").append(countryCode).append('\'');
+        sb.append(", population='").append(population).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 }
