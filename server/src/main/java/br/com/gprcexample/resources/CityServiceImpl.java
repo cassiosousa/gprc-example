@@ -9,12 +9,15 @@ import io.grpc.stub.StreamObserver;
 import net.devh.boot.grpc.server.service.GrpcService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.logging.Logger;
+
 @GrpcService
 public class CityServiceImpl extends CityServiceGrpc.CityServiceImplBase {
     private @Autowired
     CityService cityService;
     @Override
     public void getCityById(CitRequest request, StreamObserver<CityReply> responseObserver) {
+        Logger.getLogger(CityServiceImpl.class.getName()).info(String.format("City id:%s",request.getId()));
         City city = cityService.getCityById(request.getId()).orElse(new City());
         CityReply cityReply = CityReply.newBuilder()
                 .setId(city.getId())

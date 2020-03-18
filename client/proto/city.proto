@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package br.com.gprcexample.grpc.services;
+
+option java_multiple_files = true;
+option java_package = "br.com.gprcexample.grpc.services";
+option java_outer_classname = "CityServiceProto";
+
+service CityService {
+    rpc getCityById (CitRequest) returns (CityReply) {
+    }
+}
+
+message CitRequest {
+    string id = 1;
+}
+
+message CityReply {
+    string id = 1;
+    string name = 2;
+    string countryCode = 3;
+    string population = 4;
+}
